@@ -7,6 +7,7 @@
   </description>
   <url>http://ros.org/wiki/rosjava_core</url>
   <maintainer email="damonkohler@google.com">Damon Kohler</maintainer>
+  <author>Jaroslav Vitku - author of jsut these branches</author>
   <license>Apache 2.0</license>
 
   <buildtool_depend>catkin</buildtool_depend>
