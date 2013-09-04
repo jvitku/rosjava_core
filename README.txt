@@ -8,11 +8,13 @@ Original project can be found at: https://github.com/rosjava/rosjava_core
 
 -rosjava_core compilation was successful with these requirements:
 	-ROS barebones installation
-	-slightly modified genmsg project, which can be found at: https://github.com/jvitku/genmsg
+	-slightly modified genmsg project, which can be found at: https://github.com/jvitku/genmsg_rosjava
 	-these additional ROS components:
 			git clone https://github.com/ros/ros_comm.git
 			git clone https://github.com/ros/common_msgs.git
 			git clone https://github.com/ros/geometry.git
+			git clone https://github.com/ros/std_msgs.git  (part of groovy barebones installation)
+			
 	-all components have to be under $ROS_PACKAGE_PATH for successful compilation
 
 -current tests are passed non-deterministically (some tests fail potentially due to slow internet connection)
