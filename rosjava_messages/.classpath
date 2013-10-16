@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="output" path="bin"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER" exported="true"/>
-	<classpathentry kind="src" path="build/generated-src"/>
-	<classpathentry kind="src" path="/rosjava_bootstrap" exported="true"/>
-	<classpathentry kind="src" path="build/generated-src"/>
-</classpath>
