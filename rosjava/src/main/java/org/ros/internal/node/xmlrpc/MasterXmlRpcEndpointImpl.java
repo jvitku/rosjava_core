@@ -46,6 +46,7 @@ public class MasterXmlRpcEndpointImpl implements MasterXmlRpcEndpoint,
   public MasterXmlRpcEndpointImpl(MasterServer master) {
     this.master = master;
     parameterServer = new ParameterServer();
+    System.out.println("seeeeeeeeeeeeeeeeer VXER here");
   }
 
   @Override
@@ -242,6 +243,8 @@ public class MasterXmlRpcEndpointImpl implements MasterXmlRpcEndpoint,
 
   @Override
   public List<Object> hasParam(String callerId, String key) {
+	  System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx \n ------------ "+
+  parameterServer.has(GraphName.of(key)));
     return Response.newSuccess("Success", parameterServer.has(GraphName.of(key))).toList();
   }
 

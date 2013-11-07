@@ -49,7 +49,12 @@ public class DefaultParameterTree implements ParameterTree {
 
   public static DefaultParameterTree newFromNodeIdentifier(NodeIdentifier nodeIdentifier,
       URI masterUri, NameResolver resolver, ParameterManager parameterManager) {
+	  
+	  System.out.println("ssssssss "+nodeIdentifier.getName()+"   ffffff "+masterUri.toString());
+	  
     ParameterClient client = new ParameterClient(nodeIdentifier, masterUri);
+    System.out.println("cccccccccccc - client ------------- "+client.getParamNames().getResult().size());
+    
     return new DefaultParameterTree(client, parameterManager, resolver);
   }
 

@@ -35,6 +35,7 @@ import java.net.URISyntaxException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Create {@link NodeConfiguration} instances using a ROS command-line and
@@ -90,6 +91,7 @@ public class CommandLineLoader {
     nodeClassName = argv.get(0);
     for (String argument : argv.subList(1, argv.size())) {
       if (argument.contains(":=")) {
+    	  System.out.println("adding this remapping argument: "+argument+" ");
         remappingArguments.add(argument);
       } else {
         nodeArguments.add(argument);
@@ -120,6 +122,12 @@ public class CommandLineLoader {
     if (specialRemappings.containsKey(CommandLineVariables.NODE_NAME)) {
       nodeConfiguration.setNodeName(specialRemappings.get(CommandLineVariables.NODE_NAME));
     }
+    System.out.println("remappings are: "+remappings.isEmpty()+" "+remappings.size());
+    Set<GraphName> s = remappings.keySet();
+    GraphName[] g = s.toArray(new GraphName[0]);
+    for(int i=0; i<g.length; i++)
+    	System.out.println("remappings are: "+g[i]+" "+remappings.get(g[i]));
+    System.out.println("000000000000000 wall?? "+nodeConfiguration.getTimeProvider().getClass().getName());
     return nodeConfiguration;
   }
 
@@ -133,6 +141,7 @@ public class CommandLineLoader {
       if (remapping.startsWith("__")) {
         specialRemappings.put(remap[0], remap[1]);
       } else {
+    	  System.out.println("remappings: "+remap[0]+" "+remap[1]);
         remappings.put(GraphName.of(remap[0]), GraphName.of(remap[1]));
       }
     }

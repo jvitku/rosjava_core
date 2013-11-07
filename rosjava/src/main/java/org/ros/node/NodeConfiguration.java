@@ -133,6 +133,7 @@ public class NodeConfiguration {
     configuration.setTcpRosBindAddress(BindAddress.newPublic());
     configuration.setTcpRosAdvertiseAddressFactory(new PublicAdvertiseAddressFactory(host));
     configuration.setMasterUri(masterUri);
+    System.out.println("default one: +"+configuration.getTimeProvider().getClass().toString());
     return configuration;
   }
 

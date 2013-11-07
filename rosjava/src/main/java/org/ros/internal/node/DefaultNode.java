@@ -151,10 +151,21 @@ public class DefaultNode implements ConnectedNode {
 
     NodeIdentifier nodeIdentifier = slaveServer.toNodeIdentifier();
 
+    
+    System.out.println("--------default modem here: "+nodeIdentifier.getName());
+    System.out.println("parameter manager : ");
+    //parameterManager.updateParameter(GraphName.of("/use_sim_time"), "true");
+    System.out.println("parameter manager : nand");
+    
     parameterTree =
         DefaultParameterTree.newFromNodeIdentifier(nodeIdentifier, masterClient.getRemoteUri(),
             resolver, parameterManager);
 
+    System.out.println("----------parameter tr: "+parameterTree.has(GraphName.of("/use_sim_time"))+" "+
+    		parameterTree.getNames().size());
+    System.out.println("parameter tr: nand");
+    
+    
     publisherFactory =
         new PublisherFactory(nodeIdentifier, topicParticipantManager,
             nodeConfiguration.getTopicMessageFactory(), scheduledExecutorService);
@@ -191,6 +202,7 @@ public class DefaultNode implements ConnectedNode {
       }
     });
 
+    //parameterTree.set(Parameters.USE_SIM_TIME, true);
     boolean useSimTime = false;
     try {
       useSimTime =

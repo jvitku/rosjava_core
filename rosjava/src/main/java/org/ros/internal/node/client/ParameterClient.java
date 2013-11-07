@@ -55,6 +55,7 @@ public class ParameterClient extends Client<ParameterServerXmlRpcEndpoint> {
   public ParameterClient(NodeIdentifier nodeIdentifier, URI uri) {
     super(uri, ParameterServerXmlRpcEndpoint.class);
     this.nodeIdentifier = nodeIdentifier;
+    System.out.println("nnnnnnnnnnnnn ode identifier: "+nodeIdentifier.toString());
     nodeName = nodeIdentifier.getName().toString();
   }
 
