@@ -48,6 +48,7 @@ public class ParameterServer {
   private final GraphName masterName;
 
   public ParameterServer() {
+	  System.out.println("fdsfgsdgsfdgsfdgsdfg ------------- parameter server - master");
     tree = Maps.newConcurrentMap();
     subscribers = Multimaps.synchronizedMultimap(HashMultimap.<GraphName, NodeIdentifier>create());
     masterName = GraphName.of("/master");

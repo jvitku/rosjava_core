@@ -65,31 +65,37 @@ public class ParameterClient extends Client<ParameterServerXmlRpcEndpoint> {
   }
 
   public Response<Void> setParam(GraphName parameterName, Boolean parameterValue) {
+	  System.out.println("set param !!!! "+parameterName);
     return Response.fromListChecked(
         xmlRpcEndpoint.setParam(nodeName, parameterName.toString(), parameterValue), new VoidResultFactory());
   }
 
   public Response<Void> setParam(GraphName parameterName, Integer parameterValue) {
+	  System.out.println("set param !!!! "+parameterName);
     return Response.fromListChecked(
         xmlRpcEndpoint.setParam(nodeName, parameterName.toString(), parameterValue), new VoidResultFactory());
   }
 
   public Response<Void> setParam(GraphName parameterName, Double parameterValue) {
+	  System.out.println("set param !!!! "+parameterName);
     return Response.fromListChecked(
         xmlRpcEndpoint.setParam(nodeName, parameterName.toString(), parameterValue), new VoidResultFactory());
   }
 
   public Response<Void> setParam(GraphName parameterName, String parameterValue) {
+	  System.out.println("set param !!!! "+parameterName);
     return Response.fromListChecked(
         xmlRpcEndpoint.setParam(nodeName, parameterName.toString(), parameterValue), new VoidResultFactory());
   }
 
   public Response<Void> setParam(GraphName parameterName, List<?> parameterValue) {
+	  System.out.println("set param !!!! "+parameterName);
     return Response.fromListChecked(
         xmlRpcEndpoint.setParam(nodeName, parameterName.toString(), parameterValue), new VoidResultFactory());
   }
 
   public Response<Void> setParam(GraphName parameterName, Map<?, ?> parameterValue) {
+	  System.out.println("set param !!!! "+parameterName);
     return Response.fromListChecked(
         xmlRpcEndpoint.setParam(nodeName, parameterName.toString(), parameterValue), new VoidResultFactory());
   }
@@ -114,6 +120,9 @@ public class ParameterClient extends Client<ParameterServerXmlRpcEndpoint> {
   }
 
   public Response<Boolean> hasParam(GraphName parameterName) {
+	  Response<Boolean> b = Response.fromListChecked(xmlRpcEndpoint.hasParam(nodeName, parameterName.toString()),
+		        new BooleanResultFactory());
+	  System.out.println("has checking hhhh "+b.getResult());
     return Response.fromListChecked(xmlRpcEndpoint.hasParam(nodeName, parameterName.toString()),
         new BooleanResultFactory());
   }
