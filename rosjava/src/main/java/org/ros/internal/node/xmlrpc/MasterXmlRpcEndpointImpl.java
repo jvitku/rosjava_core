@@ -243,8 +243,8 @@ public class MasterXmlRpcEndpointImpl implements MasterXmlRpcEndpoint,
 
   @Override
   public List<Object> hasParam(String callerId, String key) {
-	  System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx \n ------------ "+
-  parameterServer.has(GraphName.of(key)));
+	  System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ------------ from "+
+  callerId+" looking for key:"+key+ " "+parameterServer.has(GraphName.of(key)));
     return Response.newSuccess("Success", parameterServer.has(GraphName.of(key))).toList();
   }
 
