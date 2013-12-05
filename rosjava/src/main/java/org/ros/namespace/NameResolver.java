@@ -16,6 +16,7 @@
 
 package org.ros.namespace;
 
+import org.ros.Parameters;
 import org.ros.exception.RosRuntimeException;
 
 import java.util.Collections;
@@ -159,9 +160,32 @@ public class NameResolver {
 
   protected GraphName lookUpRemapping(GraphName name) {
     GraphName remappedName = name;
+    
+    ///my
+    if(conflictingCmdRemappings(name))
+    	return remappedName;
+    	
     if (remappings.containsKey(name)) {
       remappedName = remappings.get(name);
     }
     return remappedName;
+  }
+  
+  /**
+   * ///my @author Jaroslav Vitku
+   * 
+   * If the remapping /use_sim_time:=true is specified from the command line and
+   * parameter tree has the /use_sim_time parameter set, the remapping lookup
+   * will resolve the value of the remapped key, so will return "true", this should
+   * be avoided
+   * 
+   * @return true if the name is equal to: /use_sim_time
+   */
+  private boolean conflictingCmdRemappings(GraphName name){
+	  String n = name.toString();
+	  String ust = Parameters.USE_SIM_TIME.toString();
+	  if(n.equalsIgnoreCase(ust))
+		  return true;
+	  return false;
   }
 }
