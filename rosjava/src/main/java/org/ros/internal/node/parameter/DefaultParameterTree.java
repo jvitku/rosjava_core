@@ -121,12 +121,15 @@ public class DefaultParameterTree implements ParameterTree {
 
   @Override
   public void set(GraphName name, boolean value) {
+	  System.out.println("\nDefault Parameter Tree!!!! setting this GraphName and val bool: "+name+" "+value+"\n");
     GraphName resolvedName = resolver.resolve(name);
+    System.out.println("resolved name from this GraphName: "+name+" is this: "+resolvedName);
     parameterClient.setParam(resolvedName, value);
   }
 
   @Override
   public void set(String name, boolean value) {
+	  System.out.println("\nDefault Parameter Tree!!!! setting this StringName and val bool: "+name+" "+value+"\n");
     set(GraphName.of(name), value);
   }
 

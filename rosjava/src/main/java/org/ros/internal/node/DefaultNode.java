@@ -163,8 +163,7 @@ public class DefaultNode implements ConnectedNode {
 
     System.out.println("----------parameter tr: "+parameterTree.has(GraphName.of("/use_sim_time"))+" "+
     		parameterTree.getNames().size());
-    System.out.println("parameter tr: nand");
-    
+        
     
     publisherFactory =
         new PublisherFactory(nodeIdentifier, topicParticipantManager,
@@ -208,6 +207,12 @@ public class DefaultNode implements ConnectedNode {
       useSimTime =
           parameterTree.has(Parameters.USE_SIM_TIME)
               && parameterTree.getBoolean(Parameters.USE_SIM_TIME);
+      System.out.println("OK, so checking for time provider parameter and has it? "+
+              parameterTree.has(Parameters.USE_SIM_TIME));
+      ///my @author Jaroslav Vitku
+      // NOW: parameter tree has also this: resolver/remappings where the command line remappings are stored
+      // I suppose that these should be more important than data in the parameterTree, so will try to override
+      //boolean tmp = parameterTree.
     } catch (Exception e) {
       signalOnError(e);
     }

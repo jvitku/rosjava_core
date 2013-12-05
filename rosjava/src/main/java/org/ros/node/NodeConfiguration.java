@@ -557,6 +557,8 @@ public class NodeConfiguration {
    *          the {@link TimeProvider} that {@link Node}s will use
    */
   public NodeConfiguration setTimeProvider(TimeProvider timeProvider) {
+	  System.out.println("------------ setting time provider to somethong else here!! "
+			  +timeProvider.getClass().getCanonicalName());
     this.timeProvider = timeProvider;
     return this;
   }

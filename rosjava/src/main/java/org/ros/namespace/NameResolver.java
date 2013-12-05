@@ -118,6 +118,7 @@ public class NameResolver {
    * @return the name resolved relative to the default namespace
    */
   public GraphName resolve(GraphName name) {
+	  //System.out.println("my namespace is: "+namespace);
     return resolve(namespace, name);
   }
 
@@ -157,6 +158,10 @@ public class NameResolver {
     return newChild(GraphName.of(namespace));
   }
 
+  ///my @author Jaroslav VItku
+  // OK, here is the problem, when calling "get/has" methods on parameterTree, the resolver
+  // checks all remappings (e.g. for NodeName changes), finds /use_sim_time and changes the
+  // string to its value: TRUE
   protected GraphName lookUpRemapping(GraphName name) {
     GraphName remappedName = name;
     if (remappings.containsKey(name)) {

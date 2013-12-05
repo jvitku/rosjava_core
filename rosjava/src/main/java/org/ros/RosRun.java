@@ -63,5 +63,6 @@ public class RosRun {
     Preconditions.checkState(nodeMain != null);
     NodeMainExecutor nodeMainExecutor = DefaultNodeMainExecutor.newDefault();
     nodeMainExecutor.execute(nodeMain, nodeConfiguration);
+    
   }
 }

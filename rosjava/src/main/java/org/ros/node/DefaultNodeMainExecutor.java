@@ -95,8 +95,7 @@ public class DefaultNodeMainExecutor implements NodeMainExecutor {
    * @param scheduledExecutorService
    *          {@link NodeMain}s will be executed using this
    */
-  private DefaultNodeMainExecutor(NodeFactory nodeFactory,
-      ScheduledExecutorService scheduledExecutorService) {
+  private DefaultNodeMainExecutor(NodeFactory nodeFactory, ScheduledExecutorService scheduledExecutorService) {
     this.nodeFactory = nodeFactory;
     this.scheduledExecutorService = scheduledExecutorService;
     connectedNodes =
@@ -121,7 +120,7 @@ public class DefaultNodeMainExecutor implements NodeMainExecutor {
     // NOTE(damonkohler): To avoid a race condition, we have to make our copy
     // of the NodeConfiguration in the current thread.
 	  
-	  System.out.println("-----"+nodeConfiguration.getTimeProvider().getClass().getName());
+	  System.out.println("-----xx"+nodeConfiguration.getTimeProvider().getClass().getName());
 	  
     final NodeConfiguration nodeConfigurationCopy = NodeConfiguration.copyOf(nodeConfiguration);
     nodeConfigurationCopy.setDefaultNodeName(nodeMain.getDefaultNodeName());
@@ -143,7 +142,7 @@ public class DefaultNodeMainExecutor implements NodeMainExecutor {
         nodeMains.put(node, nodeMain);
       }
     });
-    System.out.println("-----"+nodeConfiguration.getTimeProvider().getClass().getName());
+    System.out.println("-----xx last:"+nodeConfiguration.getTimeProvider().getClass().getName());
   }
 
   @Override
