@@ -7,3 +7,4 @@ build
 .DS_Store
 
 rosjava/bin/org/ros/
+bin/org/ros/

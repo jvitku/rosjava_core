@@ -45,14 +45,14 @@ import java.util.Map;
  */
 public class CommandLineLoader {
 
-  private final List<String> argv;
-  private final List<String> nodeArguments;
-  private final List<String> remappingArguments;
-  private final Map<String, String> environment;
-  private final Map<String, String> specialRemappings;
-  private final Map<GraphName, GraphName> remappings;
+  protected final List<String> argv;
+  protected final List<String> nodeArguments;
+  protected final List<String> remappingArguments;
+  protected final Map<String, String> environment;
+  protected final Map<String, String> specialRemappings;
+  protected final Map<GraphName, GraphName> remappings;
 
-  private String nodeClassName;
+  protected String nodeClassName;
 
   /**
    * Create new {@link CommandLineLoader} with specified command-line arguments.
@@ -86,7 +86,7 @@ public class CommandLineLoader {
     parseArgv();
   }
 
-  private void parseArgv() {
+  protected void parseArgv() {
     nodeClassName = argv.get(0);
     for (String argument : argv.subList(1, argv.size())) {
       if (argument.contains(":=")) {
@@ -123,7 +123,7 @@ public class CommandLineLoader {
     return nodeConfiguration;
   }
 
-  private void parseRemappingArguments() {
+  protected void parseRemappingArguments() {
     for (String remapping : remappingArguments) {
       Preconditions.checkState(remapping.contains(":="));
       String[] remap = remapping.split(":=");
@@ -146,7 +146,7 @@ public class CommandLineLoader {
    * <li>The ROS_NAMESPACE environment variable.</li>
    * </ol>
    */
-  private NameResolver buildParentResolver() {
+  protected NameResolver buildParentResolver() {
     GraphName namespace = GraphName.root();
     if (specialRemappings.containsKey(CommandLineVariables.ROS_NAMESPACE)) {
       namespace =
