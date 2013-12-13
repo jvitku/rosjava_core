@@ -192,6 +192,20 @@ public class DefaultNode implements ConnectedNode {
 			}
 		});
 
+		///my @author Jaroslav Vitku
+		// This looks for private remappings (e.g. _paramX:=12.5) and sets them on the param. server
+		if(nodeConfiguration.hasPrivateRemappings()){
+			Map<String, String> params = nodeConfiguration.getPrivateRemappings(); 
+			String[] keys = params.keySet().toArray(new String[0]);
+			
+			for(int i=0; i<keys.length; i++){
+				GraphName path = nodeName.toGlobal().join(GraphName.of(keys[i].substring(1)));
+				log.info("Received these private parameters, key: "+path+" -> "+params.get(keys[i]));
+				parameterTree.set(path,params.get(keys[i]));
+			}
+		}
+
+		// the /use_sim_time:=is not private parameter, solved differently
 		boolean useSimTime = false;
 		try {
 			useSimTime =

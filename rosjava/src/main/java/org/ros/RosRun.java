@@ -20,7 +20,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 
 import org.ros.exception.RosRuntimeException;
-import org.ros.internal.loader.CommandLineLoader;
+import org.ros.internal.loader.CommandLineLoaderII;
 import org.ros.node.DefaultNodeMainExecutor;
 import org.ros.node.NodeConfiguration;
 import org.ros.node.NodeMain;
@@ -44,7 +44,8 @@ public class RosRun {
       System.exit(1);
     }
 
-    CommandLineLoader loader = new CommandLineLoader(Lists.newArrayList(argv));
+    ///my CommandLineLoaderII reads also private command line parameters (e.g. _paramX:=3)
+    CommandLineLoaderII loader = new CommandLineLoaderII(Lists.newArrayList(argv));
     String nodeClassName = loader.getNodeClassName();
     System.out.println("Loading node class: " + loader.getNodeClassName());
     NodeConfiguration nodeConfiguration = loader.build();

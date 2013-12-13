@@ -17,7 +17,6 @@
 package org.ros.node;
 
 import org.ros.internal.message.definition.MessageDefinitionReflectionProvider;
-
 import org.ros.address.AdvertiseAddress;
 import org.ros.address.AdvertiseAddressFactory;
 import org.ros.address.BindAddress;
@@ -42,6 +41,7 @@ import java.io.File;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ScheduledExecutorService;
 
 /**
@@ -86,6 +86,11 @@ public class NodeConfiguration {
   private AdvertiseAddressFactory xmlRpcAdvertiseAddressFactory;
   private ScheduledExecutorService scheduledExecutorService;
   private TimeProvider timeProvider;
+  
+  ///my 
+  private Map<String, String> privateRemappings;
+  
+  
 
   /**
    * @param nodeConfiguration
@@ -111,9 +116,35 @@ public class NodeConfiguration {
     copy.xmlRpcAdvertiseAddressFactory = nodeConfiguration.xmlRpcAdvertiseAddressFactory;
     copy.scheduledExecutorService = nodeConfiguration.scheduledExecutorService;
     copy.timeProvider = nodeConfiguration.timeProvider;
+    
+    ///my
+    copy.privateRemappings = nodeConfiguration.privateRemappings;
     return copy;
   }
 
+  /**
+   * ///my
+   * Set and get private remappings. These are probably parsed from the command line, 
+   * will be read in the DefaultNode and passed to the parameterTree(server). 
+   * These can be also obtained from running ROS node.
+   * 
+   * @param remapps
+   */
+  public void setPrivateRemappings(Map<String,String> remapps){
+	  this.privateRemappings = remapps;
+  }
+  
+  public Map<String, String> getPrivateRemappings(){
+	  return this.privateRemappings;
+  }
+  
+  public boolean hasPrivateRemappings(){
+	  if(privateRemappings == null)
+		  return false;
+	  
+	  return !this.privateRemappings.isEmpty();
+  }
+  
   /**
    * Creates a new {@link NodeConfiguration} for a publicly accessible
    * {@link Node}.
