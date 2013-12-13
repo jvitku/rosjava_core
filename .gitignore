@@ -5,3 +5,5 @@ build
 .settings/
 
 .DS_Store
+
+rosjava/bin/org/ros/
