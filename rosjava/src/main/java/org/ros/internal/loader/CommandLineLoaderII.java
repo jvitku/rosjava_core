@@ -46,30 +46,29 @@ public class CommandLineLoaderII extends org.ros.internal.loader.CommandLineLoad
 			if (remapping.startsWith("__")) {
 				specialRemappings.put(remap[0], remap[1]);
 			}else if(remapping.startsWith("_")) {
-				System.out.println("welcome your private remapping!! "+remap[0]+" -> "+remap[1]);  
 				privateRemaps.put(remap[0], remap[1]);
 			} else {
 				remappings.put(GraphName.of(remap[0]), GraphName.of(remap[1]));
 			}
 		}
 	}
-	
 
-	  /**
-	   * Create NodeConfiguration according to ROS command-line and environment
-	   * specification.
-	   * 
-	   * Here, if some parameters are passed, start the ROS node and set them on the server.
-	   */
-	  public NodeConfiguration build() {
-		  NodeConfiguration nodeConfiguration = super.build();
-		  
-		  if(privateRemaps.isEmpty())
-			  return nodeConfiguration;
 
-		  nodeConfiguration.setPrivateRemappings(privateRemaps);
-		  
-		  return nodeConfiguration;
-	  }
+	/**
+	 * Create NodeConfiguration according to ROS command-line and environment
+	 * specification.
+	 * 
+	 * Here, if some parameters are passed, start the ROS node and set them on the server.
+	 */
+	public NodeConfiguration build() {
+		NodeConfiguration nodeConfiguration = super.build();
+
+		if(privateRemaps.isEmpty())
+			return nodeConfiguration;
+
+		nodeConfiguration.setPrivateRemappings(privateRemaps);
+
+		return nodeConfiguration;
+	}
 
 }

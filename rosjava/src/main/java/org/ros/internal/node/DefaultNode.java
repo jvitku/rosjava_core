@@ -200,7 +200,7 @@ public class DefaultNode implements ConnectedNode {
 			
 			for(int i=0; i<keys.length; i++){
 				GraphName path = nodeName.toGlobal().join(GraphName.of(keys[i].substring(1)));
-				log.info("Received these private parameters, key: "+path+" -> "+params.get(keys[i]));
+				//log.info("Received these private parameters, key: "+path+" -> "+params.get(keys[i]));
 				parameterTree.set(path,params.get(keys[i]));
 			}
 		}

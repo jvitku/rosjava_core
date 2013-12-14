@@ -17,12 +17,12 @@
 package org.ros.internal.node;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+//import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.ros.Assert.assertGraphNameEquals;
 
 import com.google.common.collect.Lists;
-import com.google.common.net.InetAddresses;
+//import com.google.common.net.InetAddresses;
 
 import org.junit.Test;
 import org.ros.RosCore;
